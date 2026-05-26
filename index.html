@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stories — Dra. Yasmim Meneses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:  #FAF8F3;
+  --warm:   #F4EFE6;
+  --warm2:  #EDE6DA;
+  --ink:    #1A1714;
+  --ink-l:  #403C38;
+  --ink-m:  #7A746E;
+  --gold:   #B08D57;
+  --gold-l: #CBA96E;
+  --gold-p: #EDE0C8;
+  --gold-xp:#F8F2E8;
+  --line:   #E6DDD2;
+  --card:   #FFFFFF;
+  --sage:   #6B7D6A;
+  --blush:  #C4957A;
+  --sky:    #7A8FA6;
+  --sh:     0 2px 24px rgba(26,23,20,0.07);
+  --sh-lg:  0 8px 40px rgba(26,23,20,0.11);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth }
+body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); font-size:15px; line-height:1.7; min-height:100vh }
+
+/* ── HEADER ── */
+header {
+  background:var(--ink);
+  color:var(--cream);
+  padding:60px 32px 52px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+header::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 130%, rgba(176,141,87,.28) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 15% 20%, rgba(176,141,87,.08) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 25% at 85% 10%, rgba(176,141,87,.06) 0%, transparent 60%);
+  pointer-events:none;
+}
+header::after {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(176,141,87,.4), transparent);
+}
+.eyebrow {
+  font-size:10px; font-weight:500; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--gold-l); margin-bottom:16px;
+  opacity:0; animation:up .6s .05s ease forwards;
+}
+.h-ornament {
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  margin-bottom:18px;
+  opacity:0; animation:up .6s .12s ease forwards;
+}
+.h-ornament::before,.h-ornament::after {
+  content:''; flex:1; max-width:60px; height:1px; background:linear-gradient(90deg,transparent,rgba(176,141,87,.5));
+}
+.h-ornament::after { background:linear-gradient(90deg,rgba(176,141,87,.5),transparent) }
+.h-ornament span { font-size:14px; color:var(--gold-l); opacity:.7 }
+header h1 {
+  font-family:'Cormorant Garamond',serif; font-weight:300;
+  font-size:clamp(2rem,5.5vw,3.4rem); line-height:1.12; margin-bottom:12px;
+  opacity:0; animation:up .6s .2s ease forwards;
+}
+header h1 em { font-style:italic; color:var(--gold-l) }
+.h-div { width:40px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:20px auto 16px; opacity:0; animation:up .6s .3s ease forwards }
+.h-sub {
+  font-size:12.5px; color:rgba(250,248,243,.42); font-weight:300; letter-spacing:.04em;
+  opacity:0; animation:up .6s .38s ease forwards;
+}
+.h-tags {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:18px;
+  opacity:0; animation:up .6s .46s ease forwards;
+}
+.h-tag {
+  font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  padding:4px 12px; border:1px solid rgba(176,141,87,.3); border-radius:20px;
+  color:rgba(203,169,110,.7);
+}
+
+/* ── TAB BAR ── */
+.tab-bar {
+  background:var(--card); border-bottom:1px solid var(--line);
+  position:sticky; top:0; z-index:100;
+  box-shadow:0 1px 14px rgba(26,23,20,.07);
+}
+.tab-bar-inner { max-width:1020px; margin:0 auto; display:flex }
+.tab-btn {
+  flex:1; padding:0; background:none; border:none;
+  border-bottom:2px solid transparent; cursor:pointer;
+  transition:border-color .25s, background .2s; position:relative;
+}
+.tab-btn-inner { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px 20px; gap:4px }
+.tab-btn:hover .tab-btn-inner { background:var(--warm) }
+.tab-btn.active { border-bottom-color:var(--gold) }
+.tab-icon { font-size:20px; transition:transform .25s }
+.tab-btn.active .tab-icon { transform:scale(1.1) }
+.tab-label { font-size:11px; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-m); transition:color .2s }
+.tab-btn.active .tab-label { color:var(--gold) }
+.tab-sub { font-size:11px; color:var(--ink-m); opacity:.6; font-style:italic }
+.tab-btn.active .tab-sub { opacity:1; color:var(--gold-l) }
+
+/* ── PANELS ── */
+.panel { display:none }
+.panel.active { display:block; animation:fadeIn .35s ease }
+
+/* ── MAIN ── */
+main { max-width:1020px; margin:0 auto; padding:48px 24px 80px }
+.s-label { font-size:10px; font-weight:500; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-bottom:6px }
+.s-title { font-family:'Cormorant Garamond',serif; font-size:2.1rem; font-weight:400; color:var(--ink); margin-bottom:10px; line-height:1.2 }
+.s-title em { font-style:italic; color:var(--gold) }
+.s-desc { font-size:14px; color:var(--ink-m); margin-bottom:36px; max-width:600px; line-height:1.85 }
+
+/* ══════════════════════════════
+   TAB 1: VISÃO GERAL
+══════════════════════════════ */
+.week-grid {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:10px; margin-bottom:20px;
+}
+.day-card {
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:20px 15px; box-shadow:var(--sh); position:relative; overflow:hidden;
+  transition:box-shadow .22s, transform .22s;
+}
+.day-card:hover { box-shadow:var(--sh-lg); transform:translateY(-3px) }
+.day-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-l));
+  opacity:.55;
+}
+.day-number {
+  font-size:28px; font-family:'Cormorant Garamond',serif; font-weight:300;
+  color:var(--gold-p); line-height:1; margin-bottom:6px;
+}
+.day-name { font-size:9.5px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:6px }
+.day-theme { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:var(--ink); margin-bottom:8px; line-height:1.25 }
+.day-focus { font-size:11px; color:var(--ink-m); font-style:italic; line-height:1.55; margin-bottom:12px }
+.day-stories { display:flex; flex-direction:column; gap:5px }
+.day-story-item { font-size:11px; color:var(--ink-l); display:flex; align-items:flex-start; gap:6px; line-height:1.5 }
+.day-story-item::before { content:'·'; color:var(--gold); font-size:14px; flex-shrink:0; margin-top:-1px }
+.day-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  margin-top:12px; padding:3px 9px; border-radius:20px;
+  font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:500;
+}
+.day-badge.paleta { background:var(--gold-xp); color:var(--gold); border:1px solid var(--gold-p) }
+.day-badge.dra { background:#F0F4F0; color:var(--sage); border:1px solid #D5E0D4 }
+
+.notice-band {
+  background:var(--warm); border:1px solid var(--line); border-radius:10px;
+  padding:16px 22px; display:flex; align-items:flex-start; gap:14px; margin-bottom:0;
+}
+.notice-band p { font-size:13px; color:var(--ink-m); line-height:1.65 }
+.notice-band strong { color:var(--ink) }
+
+/* ══════════════════════════════
+   TAB 2: ROTEIRO COMPLETO
+══════════════════════════════ */
+.day-block { margin-bottom:44px }
+.day-header {
+  display:flex; align-items:center; gap:18px; margin-bottom:22px;
+  padding-bottom:16px; border-bottom:1px solid var(--line);
+}
+.day-badge-lg {
+  background:var(--ink); color:var(--gold-l);
+  border-radius:10px; padding:12px 18px;
+  text-align:center; flex-shrink:0; min-width:72px;
+}
+.dbl-label { font-size:8.5px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:rgba(203,169,110,.5); display:block; margin-bottom:3px }
+.dbl-name { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; line-height:1; display:block }
+.day-meta h3 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:var(--ink); margin-bottom:2px }
+.day-meta p { font-size:13px; color:var(--ink-m); font-style:italic }
+
+.stories-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px }
+
+.story-card {
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  overflow:hidden; box-shadow:var(--sh); display:flex; flex-direction:column;
+  transition:box-shadow .2s, transform .2s;
+}
+.story-card:hover { box-shadow:var(--sh-lg); transform:translateY(-2px) }
+
+.sc-top { padding:14px 16px 12px; border-bottom:1px solid var(--line) }
+.sc-num {
+  font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300;
+  color:var(--gold-p); line-height:1; float:right; margin:-4px -4px 0 0;
+}
+.sc-tag {
+  font-size:9px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  margin-bottom:6px; display:flex; align-items:center; gap:5px;
+}
+.sc-tag.photo { color:#7A8FA6 }
+.sc-tag.copy  { color:var(--blush) }
+.sc-tag.inter { color:var(--sage) }
+.sc-title { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:600; color:var(--ink); line-height:1.25; clear:both }
+
+.sc-body { padding:14px 16px; flex:1; display:flex; flex-direction:column; gap:10px }
+
+.sc-item { font-size:13px; color:var(--ink-l); line-height:1.65; display:flex; gap:9px; align-items:flex-start }
+.sc-item .fi { flex-shrink:0; font-size:14px; margin-top:2px }
+
+.sc-copy {
+  font-size:13px; font-style:italic; color:var(--ink-l);
+  background:var(--warm); border-left:2px solid var(--gold);
+  border-radius:0 6px 6px 0; padding:10px 13px; line-height:1.7;
+}
+
+.sc-inter {
+  font-size:12px; color:var(--sage);
+  background:#F0F4F0; border:1px solid #D5E0D4;
+  border-radius:6px; padding:8px 12px; line-height:1.6;
+  display:flex; gap:8px; align-items:flex-start;
+}
+.sc-inter .fi { flex-shrink:0 }
+
+.day-rule {
+  margin-top:14px; padding:13px 16px;
+  background:#FDF3F0; border:1px solid #ECDAD5; border-radius:8px;
+  font-size:13px; color:#7A4A40; line-height:1.7;
+  display:flex; gap:10px; align-items:flex-start;
+}
+.day-rule span:first-child { flex-shrink:0 }
+
+.day-divider { border:none; border-top:1px solid var(--line); margin:36px 0 }
+
+/* ══════════════════════════════
+   TAB 3: DICAS DE PRODUÇÃO
+══════════════════════════════ */
+.tips-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:32px }
+.tip-card {
+  background:var(--card); border:1px solid var(--line); border-radius:14px;
+  padding:28px 26px; box-shadow:var(--sh); position:relative; overflow:hidden;
+}
+.tip-card::after {
+  content:''; position:absolute; bottom:0; right:0; width:80px; height:80px;
+  border-radius:50%; background:var(--gold-xp); transform:translate(30px,30px);
+  pointer-events:none;
+}
+.tip-icon { font-size:28px; margin-bottom:14px }
+.tip-label { font-size:9.5px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:6px }
+.tip-title { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; color:var(--ink); margin-bottom:10px; line-height:1.2 }
+.tip-body { font-size:13.5px; color:var(--ink-m); line-height:1.8 }
+.tip-body strong { color:var(--ink) }
+.tip-body em { font-style:italic; color:var(--gold) }
+
+.vocab-block {
+  background:var(--ink); color:var(--cream); border-radius:14px;
+  padding:28px 30px; margin-bottom:20px;
+}
+.vocab-block h3 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:400; color:var(--gold-l); margin-bottom:16px }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; gap:12px }
+.vocab-item { display:flex; flex-direction:column; gap:4px }
+.v-no { font-size:11px; color:rgba(250,248,243,.38); text-decoration:line-through }
+.v-yes { font-size:13px; color:var(--gold-l) }
+.v-arr { font-size:10px; color:rgba(203,169,110,.45); font-style:italic; margin-top:-2px }
+
+.timing-block { background:var(--warm); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-bottom:20px }
+.timing-header { padding:16px 22px; border-bottom:1px solid var(--line); }
+.timing-header h3 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; color:var(--ink) }
+.timing-grid { display:grid; grid-template-columns:repeat(3,1fr) }
+.timing-col { padding:16px 20px }
+.timing-col:not(:last-child) { border-right:1px solid var(--line) }
+.timing-day { font-size:9.5px; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-m); margin-bottom:8px }
+.timing-slot { display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:12.5px; color:var(--ink-l); line-height:1.5 }
+.timing-slot .fi { flex-shrink:0; font-size:13px }
+
+/* ── ANIMATIONS ── */
+@keyframes up { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── FOOTER ── */
+footer {
+  text-align:center; padding:30px; border-top:1px solid var(--line);
+  font-size:12px; color:var(--ink-m); letter-spacing:.03em;
+}
+footer em { color:var(--gold); font-style:italic }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .week-grid { grid-template-columns:repeat(4,1fr) }
+  .stories-row { grid-template-columns:1fr }
+  .tips-grid { grid-template-columns:1fr }
+  .vocab-row { grid-template-columns:1fr }
+  .timing-grid { grid-template-columns:1fr }
+  .timing-col:not(:last-child) { border-right:none; border-bottom:1px solid var(--line) }
+}
+@media(max-width:640px){
+  .week-grid { grid-template-columns:1fr 1fr }
+  header { padding:44px 20px 36px }
+  main { padding:32px 16px 60px }
+  .tab-sub { display:none }
+}
+@media(max-width:380px){
+  .week-grid { grid-template-columns:1fr }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Paleta Mkt · Estratégia de Conteúdo</p>
+  <div class="h-ornament"><span>✦</span></div>
+  <h1>Stories <em>Diários</em><br>Dra. Yasmim Meneses</h1>
+  <div class="h-div"></div>
+  <p class="h-sub">@dra.ysm · Implantodontia & Reabilitação Oral · Manaus/AM</p>
+  <div class="h-tags">
+    <span class="h-tag">Implantes</span>
+    <span class="h-tag">Prótese</span>
+    <span class="h-tag">Cirurgia Oral</span>
+    <span class="h-tag">Biomimética</span>
+    <span class="h-tag">3 stories/dia</span>
+  </div>
+</header>
+
+<div class="tab-bar">
+  <div class="tab-bar-inner">
+
+    <button class="tab-btn active" onclick="showTab('semana',this)">
+      <div class="tab-btn-inner">
+        <span class="tab-icon">🗓</span>
+        <span class="tab-label">Visão Geral</span>
+        <span class="tab-sub">Panorama da semana</span>
+      </div>
+    </button>
+
+    <button class="tab-btn" onclick="showTab('roteiro',this)">
+      <div class="tab-btn-inner">
+        <span class="tab-icon">📋</span>
+        <span class="tab-label">Roteiro Completo</span>
+        <span class="tab-sub">Copy + foto + interação</span>
+      </div>
+    </button>
+
+    <button class="tab-btn" onclick="showTab('dicas',this)">
+      <div class="tab-btn-inner">
+        <span class="tab-icon">✨</span>
+        <span class="tab-label">Dicas de Produção</span>
+        <span class="tab-sub">Visual, voz e timing</span>
+      </div>
+    </button>
+
+  </div>
+</div>
+
+<main>
+
+<!-- ══════════════════════════════════════
+     TAB 1 · VISÃO GERAL
+══════════════════════════════════════ -->
+<div class="panel active" id="panel-semana">
+
+  <p class="s-label">Visão geral</p>
+  <h2 class="s-title">A semana <em>completa</em> em stories</h2>
+  <p class="s-desc">3 stories por dia, 7 dias por semana. Segunda a sexta, a equipe Paleta cuida de tudo. Fim de semana, a Dra. Yasmim posta com autonomia — as orientações completas estão na aba Roteiro.</p>
+
+  <div class="week-grid">
+
+    <div class="day-card">
+      <div class="day-number">01</div>
+      <p class="day-name">Segunda</p>
+      <p class="day-theme">O Porquê de Recomeçar</p>
+      <p class="day-focus">Abrir a semana com acolhimento e intenção transformadora.</p>
+      <div class="day-stories">
+        <span class="day-story-item">Dra. sorrindo ou tomando café</span>
+        <span class="day-story-item">Close de sorriso real (acervo)</span>
+        <span class="day-story-item">Mãos da Dra. com modelo ou instrumento</span>
+      </div>
+      <span class="day-badge paleta">✦ Paleta cuida</span>
+    </div>
+
+    <div class="day-card">
+      <div class="day-number">02</div>
+      <p class="day-name">Terça</p>
+      <p class="day-theme">Detalhes que Trazem Paz</p>
+      <p class="day-focus">Mostrar cuidado, ambiente e tecnologia que geram confiança.</p>
+      <div class="day-stories">
+        <span class="day-story-item">Consultório em slow motion / luz natural</span>
+        <span class="day-story-item">Lente cerâmica ou porcelana</span>
+        <span class="day-story-item">Dra. de máscara — sorriso nos olhos</span>
+      </div>
+      <span class="day-badge paleta">✦ Paleta cuida</span>
+    </div>
+
+    <div class="day-card">
+      <div class="day-number">03</div>
+      <p class="day-name">Quarta</p>
+      <p class="day-theme">Superando o Medo</p>
+      <p class="day-focus">Quebrar a barreira do trauma e mostrar a odontologia nova.</p>
+      <div class="day-stories">
+        <span class="day-story-item">Paciente de costas / reflexão</span>
+        <span class="day-story-item">Monitor com planejamento digital</span>
+        <span class="day-story-item">Dra. organizando mesa de trabalho</span>
+      </div>
+      <span class="day-badge paleta">✦ Paleta cuida</span>
+    </div>
+
+    <div class="day-card">
+      <div class="day-number">04</div>
+      <p class="day-name">Quinta</p>
+      <p class="day-theme">TBT de Resultados</p>
+      <p class="day-focus">Provar o impacto real do trabalho — além dos dentes, a vida muda.</p>
+      <div class="day-stories">
+        <span class="day-story-item">Prato de comida / qualidade de vida</span>
+        <span class="day-story-item">Antes & Depois (expressão facial)</span>
+        <span class="day-story-item">Recepção com flores / CTA agenda</span>
+      </div>
+      <span class="day-badge paleta">✦ Paleta cuida</span>
+    </div>
+
+    <div class="day-card">
+      <div class="day-number">05</div>
+      <p class="day-name">Sexta</p>
+      <p class="day-theme">Sorriso & Vida Social</p>
+      <p class="day-focus">Fechar a semana com leveza e conexão com a vida fora do consultório.</p>
+      <div class="day-stories">
+        <span class="day-story-item">Lifestyle — pessoas rindo juntas</span>
+        <span class="day-story-item">Detalhe da Dra. — jaleco, nome</span>
+        <span class="day-story-item">Vídeo de tchau / CTA direct</span>
+      </div>
+      <span class="day-badge paleta">✦ Paleta cuida</span>
+    </div>
+
+    <div class="day-card">
+      <div class="day-number">06</div>
+      <p class="day-name">Sábado</p>
+      <p class="day-theme">Bastidores do Cuidado</p>
+      <p class="day-focus">Mostrar a dentista que nunca para de aprender e de se renovar.</p>
+      <div class="day-stories">
+        <span class="day-story-item">Livro técnico ou tela de curso</span>
+        <span class="day-story-item">Dra. com família / pés pro alto</span>
+        <span class="day-story-item">Detalhe arquitetônico do consultório</span>
+      </div>
+      <span class="day-badge dra">🌿 Dra. posta</span>
+    </div>
+
+    <div class="day-card">
+      <div class="day-number">07</div>
+      <p class="day-name">Domingo</p>
+      <p class="day-theme">Preparação Mental</p>
+      <p class="day-focus">Humanizar com leveza e preparar o seguidor para a próxima semana.</p>
+      <div class="day-stories">
+        <span class="day-story-item">Xícara de chá / café no fim de tarde</span>
+        <span class="day-story-item">Sorriso espontâneo — banco de imagens</span>
+        <span class="day-story-item">Dra. sorrindo — convite para segunda</span>
+      </div>
+      <span class="day-badge dra">🌿 Dra. posta</span>
+    </div>
+
+  </div>
+
+  <div class="notice-band">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px">💡</span>
+    <p><strong>Segunda a sexta:</strong> a equipe Paleta cuida de produção, copy e publicação. Sua tarefa é enviar fotos do acervo quando solicitado. <strong>Sábado e domingo:</strong> a Dra. Yasmim posta com autonomia — as orientações de copy e foto estão no Roteiro Completo.</p>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TAB 2 · ROTEIRO COMPLETO
+══════════════════════════════════════ -->
+<div class="panel" id="panel-roteiro">
+
+  <p class="s-label">Roteiro completo</p>
+  <h2 class="s-title">Copy, foto e <em>interação</em> — dia a dia</h2>
+  <p class="s-desc">Cada story com sugestão de imagem, texto pronto para usar e dica de interação para ampliar o alcance.</p>
+
+  <!-- SEGUNDA -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge-lg">
+        <span class="dbl-label">Dia</span>
+        <span class="dbl-name">Segunda</span>
+      </div>
+      <div class="day-meta">
+        <h3>O Porquê de Recomeçar</h3>
+        <p>Acolhimento, intenção e abertura de semana com propósito</p>
+      </div>
+    </div>
+    <div class="stories-row">
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">1</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Dra. sorrindo ou café</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto espontânea da Dra. sorrindo — ou foto de café / ambiente de manhã.</span></div>
+          <div class="sc-copy">"Bom dia! Segunda é aquele dia oficial de colocar os planos em prática. Se o seu plano envolve voltar a sorrir sem medo, estamos aqui pra isso."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">2</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Close sorriso real</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Close de sorriso do acervo — foco no brilho e na naturalidade dos dentes.</span></div>
+          <div class="sc-copy">"Reabilitação não é só sobre dentes novos — é sobre recuperar a vontade de aparecer na foto de família. Olhem esse brilho!"</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">3</span>
+          <p class="sc-tag inter">💬 Interação</p>
+          <p class="sc-title">Mãos da Dra.</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto das mãos da Dra. segurando modelo de arcada ou instrumento.</span></div>
+          <div class="sc-copy">"Cada caso que chega aqui é uma história diferente que a gente tem a honra de transformar. Vamos pra mais uma semana?"</div>
+          <div class="sc-inter"><span class="fi">💬</span><span>Adicione uma enquete: <strong>"Você já fez algum procedimento aqui?"</strong> — gera engajamento e dados reais.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="day-divider">
+
+  <!-- TERÇA -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge-lg">
+        <span class="dbl-label">Dia</span>
+        <span class="dbl-name">Terça</span>
+      </div>
+      <div class="day-meta">
+        <h3>Detalhes que Trazem Paz</h3>
+        <p>Ambiente, tecnologia e presença humana da Dra. no atendimento</p>
+      </div>
+    </div>
+    <div class="stories-row">
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">1</span>
+          <p class="sc-tag photo">📸 Foto / Vídeo</p>
+          <p class="sc-title">Consultório em slow motion</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🎬</span><span>Vídeo curto em slow motion do ambiente — luz natural, vela aromática ou detalhe arquitetônico.</span></div>
+          <div class="sc-copy">"Gosto que esse ambiente traga paz. Sei que vir ao dentista gera ansiedade em muitos, por isso cuidamos de cada detalhe pra você se sentir em casa."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">2</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Material estético</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto de lente cerâmica ou dente de porcelana sobre gaze limpa — destaque o acabamento.</span></div>
+          <div class="sc-copy">"A tecnologia hoje permite que a gente devolva um dente com a mesma textura e cor do natural. É arte pura!"</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">3</span>
+          <p class="sc-tag inter">💬 Interação</p>
+          <p class="sc-title">Dra. de máscara</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto da Dra. de máscara — posicione onde dê pra ver o "sorriso nos olhos".</span></div>
+          <div class="sc-copy">"Segurança e carinho em cada etapa. Alguma dúvida sobre como funciona o tratamento? Deixa aqui embaixo que eu respondo."</div>
+          <div class="sc-inter"><span class="fi">💬</span><span>Adicione uma <strong>caixinha de perguntas</strong> — o algoritmo adora e você coleta dúvidas reais para conteúdo futuro.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="day-divider">
+
+  <!-- QUARTA -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge-lg">
+        <span class="dbl-label">Dia</span>
+        <span class="dbl-name">Quarta</span>
+      </div>
+      <div class="day-meta">
+        <h3>Superando o Medo</h3>
+        <p>Quebrar traumas do passado e mostrar a odontologia contemporânea</p>
+      </div>
+    </div>
+    <div class="stories-row">
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">1</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Paciente em reflexão</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto de paciente de costas, olhando para uma janela — postura de quem está pensando e se reconhecendo.</span></div>
+          <div class="sc-copy">"Eu recebo muitas pessoas que deixaram de vir ao dentista por traumas do passado. Quero te dizer: a odontologia mudou, e o seu conforto é nossa prioridade."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">2</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Planejamento digital</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖥</span><span>Foto do monitor mostrando um planejamento digital de sorriso — antes e depois virtual.</span></div>
+          <div class="sc-copy">"Hoje a gente consegue desenhar seu sorriso antes mesmo de começar. Sem surpresas, só resultados planejados."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">3</span>
+          <p class="sc-tag inter">💬 Interação</p>
+          <p class="sc-title">Dra. organizando a mesa</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🎬</span><span>Vídeo da Dra. organizando a mesa de trabalho — bastidor real, sem roteiro.</span></div>
+          <div class="sc-copy">"O melhor momento do meu dia é quando o paciente se olha no espelho pela primeira vez depois da reabilitação. É impagável!"</div>
+          <div class="sc-inter"><span class="fi">❤️</span><span>Adicione um <strong>termômetro de reação</strong> (emoji deslizante) — simples e eficaz para aumentar visualizações.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="day-divider">
+
+  <!-- QUINTA -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge-lg">
+        <span class="dbl-label">Dia</span>
+        <span class="dbl-name">Quinta</span>
+      </div>
+      <div class="day-meta">
+        <h3>TBT de Resultados Reais</h3>
+        <p>Provar o impacto com casos reais — não só dentes, mas vidas transformadas</p>
+      </div>
+    </div>
+    <div class="stories-row">
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">1</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Qualidade de vida</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto de prato de comida bonito — uma maçã, carne bem selada ou refeição colorida.</span></div>
+          <div class="sc-copy">"Poder comer o que gosta sem dor ou insegurança... Isso também é qualidade de vida que a reabilitação oral devolve."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">2</span>
+          <p class="sc-tag photo">📸 Antes & Depois</p>
+          <p class="sc-title">Expressão, não só dentes</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto de Antes & Depois do acervo — foque na mudança de postura e expressão do rosto.</span></div>
+          <div class="sc-copy">"Um TBT de uma transformação que mudou não só o sorriso, mas a postura dessa paciente. Ela voltou a brilhar!"</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">3</span>
+          <p class="sc-tag inter">💬 Interação + CTA</p>
+          <p class="sc-title">Recepção com flores</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto da recepção com arranjo de flores — ambiente aconchegante e premium.</span></div>
+          <div class="sc-copy">"Nossa casa está pronta pra te receber. Já pensou que o seu 'depois' pode começar hoje?"</div>
+          <div class="sc-inter"><span class="fi">📲</span><span>Adicione <strong>botão de link para o WhatsApp</strong> — quinta-feira tem alta conversão para agendamento.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="day-divider">
+
+  <!-- SEXTA -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge-lg">
+        <span class="dbl-label">Dia</span>
+        <span class="dbl-name">Sexta</span>
+      </div>
+      <div class="day-meta">
+        <h3>Sorriso & Vida Social</h3>
+        <p>Encerrar a semana com leveza — o sorriso como passaporte para a vida</p>
+      </div>
+    </div>
+    <div class="stories-row">
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">1</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Lifestyle — vida social</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto de estilo de vida — duas pessoas brindando, rindo juntas ou aproveitando um momento.</span></div>
+          <div class="sc-copy">"Sextou! E nada melhor do que aproveitar o fim de semana com liberdade para rir alto e socializar sem travas."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">2</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Detalhe da Dra.</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Close no jaleco com o nome bordado, ou detalhe de equipamento — elegante e autoral.</span></div>
+          <div class="sc-copy">"Terminando os atendimentos da semana com o coração leve. Ver a confiança voltando pro rosto de cada paciente é o que me move."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">3</span>
+          <p class="sc-tag inter">💬 Interação + CTA</p>
+          <p class="sc-title">Vídeo saindo do consultório</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🎬</span><span>Vídeo curto dando "tchau" ou saindo do consultório — autêntico e humano.</span></div>
+          <div class="sc-copy">"Dúvidas sobre horários para a semana que vem? Me chama no direct que a equipe te ajuda!"</div>
+          <div class="sc-inter"><span class="fi">📲</span><span>Adicione o <strong>botão de direct</strong> — sexta à tarde tem alta abertura de mensagens.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="day-divider">
+
+  <!-- SÁBADO -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge-lg" style="background:var(--sage)">
+        <span class="dbl-label">Dia</span>
+        <span class="dbl-name">Sábado</span>
+      </div>
+      <div class="day-meta">
+        <h3>Bastidores do Cuidado</h3>
+        <p>A Dra. posta — estudo, equilíbrio e beleza do espaço de trabalho</p>
+      </div>
+    </div>
+    <div class="stories-row">
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">1</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Estudo contínuo</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">📚</span><span>Foto de livro técnico aberto ou tela de curso — mostra que aprender faz parte da rotina.</span></div>
+          <div class="sc-copy">"Sábado também é dia de estudar. A reabilitação oral evolui rápido e eu faço questão de trazer o que há de melhor pra vocês."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">2</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Equilíbrio e descanso</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto com a família, pet ou apenas com os pés pro alto — equilíbrio real, sem filtro.</span></div>
+          <div class="sc-copy">"Equilíbrio é tudo. Recarregando as baterias para cuidar de vocês com toda energia na segunda."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">3</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Detalhe do consultório</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🏛</span><span>Foto de um detalhe arquitetônico bonito do consultório — recepção, vitrine de materiais, iluminação.</span></div>
+          <div class="sc-copy">"Desejo um final de semana com muitos motivos para sorrir!"</div>
+          <div class="sc-inter"><span class="fi">❤️</span><span>Termine com um <strong>emoji deslizante</strong> (coração ou sorriso) — interação leve para o fim de semana.</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="day-rule">
+      <span>💡</span>
+      <span>Não force os 3 stories se o sábado estiver corrido. Um story real e autêntico vale mais do que três postados por obrigação.</span>
+    </div>
+  </div>
+
+  <hr class="day-divider">
+
+  <!-- DOMINGO -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge-lg" style="background:var(--sage)">
+        <span class="dbl-label">Dia</span>
+        <span class="dbl-name">Domingo</span>
+      </div>
+      <div class="day-meta">
+        <h3>Preparação Mental</h3>
+        <p>A Dra. posta — humanização com leveza e convite para a semana</p>
+      </div>
+    </div>
+    <div class="stories-row">
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">1</span>
+          <p class="sc-tag photo">📸 Foto</p>
+          <p class="sc-title">Xícara de chá ou café</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">☕</span><span>Foto de uma xícara de chá ou café com luz de fim de tarde — aconchegante e real.</span></div>
+          <div class="sc-copy">"Domingo à tarde... Momento de silenciar e planejar a semana que vem por aí."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">2</span>
+          <p class="sc-tag photo">📸 Banco de imagens</p>
+          <p class="sc-title">Sorriso espontâneo</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto de banco (Pexels/Unsplash) — mulher ou homem de meia-idade sorrindo de forma genuína.</span></div>
+          <div class="sc-copy">"Nunca é tarde para investir em você. O seu sorriso é o seu cartão de visitas mais importante."</div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="sc-top">
+          <span class="sc-num">3</span>
+          <p class="sc-tag inter">💬 Interação</p>
+          <p class="sc-title">Dra. sorrindo</p>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item"><span class="fi">🖼</span><span>Foto da Dra. sorrindo — espontânea, sem jaleco se possível, mostrando a pessoa real.</span></div>
+          <div class="sc-copy">"Até amanhã! Animada para os novos sorrisos que vamos construir."</div>
+          <div class="sc-inter"><span class="fi">💬</span><span>Termine com uma <strong>enquete simples</strong>: "Pronta(o) para uma nova semana?" — abre o domingo com engajamento leve.</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="day-rule">
+      <span>💡</span>
+      <span>Domingo tem dois picos: 10h–12h para conteúdo de bem-estar, e 19h–21h para reflexão e motivação. Escolha o que fizer mais sentido para a sua tarde.</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TAB 3 · DICAS DE PRODUÇÃO
+══════════════════════════════════════ -->
+<div class="panel" id="panel-dicas">
+
+  <p class="s-label">Dicas de produção</p>
+  <h2 class="s-title">Visual, voz e <em>timing</em></h2>
+  <p class="s-desc">Diretrizes para manter a identidade da Dra. Yasmim em cada story — do visual ao vocabulário.</p>
+
+  <div class="tips-grid">
+
+    <div class="tip-card">
+      <div class="tip-icon">🎨</div>
+      <p class="tip-label">Identidade Visual</p>
+      <h3 class="tip-title">Estética Minimalista Premium</h3>
+      <p class="tip-body">Use <strong>fontes finas</strong> — a Serif nativa do Instagram funciona muito bem. Cores do texto: <em>bege, off-white e dourado fosco</em>. Nunca encha o story de texto; uma frase impacta mais do que três. Cores de fundo: bege, branco e cinza claro — sem saturação excessiva.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🗣</div>
+      <p class="tip-label">Linguagem & Voz</p>
+      <h3 class="tip-title">Próxima, não técnica</h3>
+      <p class="tip-body">A Dra. Yasmim fala <strong>com</strong> o paciente, não <strong>para</strong> ele. Evite termos que criam distância ou intimidam. Use palavras que qualquer pessoa entende — a transformação precisa parecer acessível antes de parecer premium.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🪴</div>
+      <p class="tip-label">Humanização</p>
+      <h3 class="tip-title">Presença Sem Aparecer</h3>
+      <p class="tip-body">Se não houver fotos novas da Dra., use <strong>mãos trabalhando</strong>, o <strong>ambiente vazio mas bem iluminado</strong> ou foque nos sorrisos dos pacientes. A conexão emocional se mantém mesmo sem o rosto dela presente em todos os stories.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">📲</div>
+      <p class="tip-label">Interação & Alcance</p>
+      <h3 class="tip-title">Sempre uma Ação</h3>
+      <p class="tip-body">Toda semana deve ter pelo menos <strong>uma caixinha de perguntas</strong> e <strong>uma enquete</strong>. O algoritmo do Instagram prioriza stories com interação. O emoji deslizante (termômetro de reação) é simples e muito eficaz — use no mínimo uma vez por semana.</p>
+    </div>
+
+  </div>
+
+  <div class="vocab-block">
+    <h3>✗ Evite · ✓ Use</h3>
+    <div class="vocab-row">
+      <div class="vocab-item">
+        <span class="v-no">osseointegração</span>
+        <span class="v-yes">✓ fixação do implante no osso</span>
+        <span class="v-arr">mais claro e menos intimidador</span>
+      </div>
+      <div class="vocab-item">
+        <span class="v-no">prótese protocolo</span>
+        <span class="v-yes">✓ transformação total do sorriso</span>
+        <span class="v-arr">foco no resultado, não no procedimento</span>
+      </div>
+      <div class="vocab-item">
+        <span class="v-no">cirurgia de implante</span>
+        <span class="v-yes">✓ colocação do seu novo dente</span>
+        <span class="v-arr">retira o medo embutido na palavra</span>
+      </div>
+      <div class="vocab-item">
+        <span class="v-no">reabilitação oral extensa</span>
+        <span class="v-yes">✓ jornada de transformação completa</span>
+        <span class="v-arr">romantiza sem perder o peso real</span>
+      </div>
+      <div class="vocab-item">
+        <span class="v-no">pós-operatório</span>
+        <span class="v-yes">✓ recuperação tranquila</span>
+        <span class="v-arr">subtrai o medo, adiciona confiança</span>
+      </div>
+      <div class="vocab-item">
+        <span class="v-no">biomimética</span>
+        <span class="v-yes">✓ dente com cor e textura do natural</span>
+        <span class="v-arr">o resultado importa mais que a técnica</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timing-block">
+    <div class="timing-header">
+      <h3>⏰ Melhores horários para postar</h3>
+    </div>
+    <div class="timing-grid">
+      <div class="timing-col">
+        <p class="timing-day">Seg · Ter · Qua · Qui</p>
+        <div class="timing-slot"><span class="fi">⭐</span><span><strong>7h – 9h</strong> — antes do trabalho, alta abertura</span></div>
+        <div class="timing-slot"><span class="fi">✅</span><span><strong>12h – 13h</strong> — horário de almoço, bom engajamento</span></div>
+        <div class="timing-slot"><span class="fi">✅</span><span><strong>18h – 20h</strong> — saída do trabalho, pico de uso</span></div>
+      </div>
+      <div class="timing-col">
+        <p class="timing-day">Sexta</p>
+        <div class="timing-slot"><span class="fi">⭐</span><span><strong>12h – 14h</strong> — sexta do almoço tem alto engajamento</span></div>
+        <div class="timing-slot"><span class="fi">✅</span><span><strong>17h – 19h</strong> — saída antecipada, bom para CTA</span></div>
+        <div class="timing-slot"><span class="fi">❌</span><span>Evite após 21h — sexta à noite tem menor visualização em saúde</span></div>
+      </div>
+      <div class="timing-col">
+        <p class="timing-day">Sab & Dom</p>
+        <div class="timing-slot"><span class="fi">⭐</span><span><strong>9h – 11h</strong> — manhã de fim de semana, público receptivo</span></div>
+        <div class="timing-slot"><span class="fi">✅</span><span><strong>Dom 19h – 21h</strong> — reflexão de domingo, alto engajamento</span></div>
+        <div class="timing-slot"><span class="fi">❌</span><span>Evite Dom 13h–17h — menor atividade no Instagram</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<footer>
+  Produzido por <em>Paleta Mkt</em> · Assessoria de Marketing, Manaus/AM · @paleta.marketing
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
